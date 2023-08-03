@@ -6,14 +6,35 @@
     /* Seletor global */
     margin: 0;
     padding: 0;
+
 }
 
+:root {
+    --cor-texto: white;
+    --plano-de-fundo: url('../assets/c344ece5ea6e3fc6c11e4909dceda7c8.jpg');--cor-da-borda: rgba(255, 255, 255, 0.5);
+    --cor-do-botao: rgba(255, 255, 255, 0.05);
+    --cor-do-botao-hover: rgba(247, 6, 6, 0.212);
+    --cor-da-borda-links: rgb(153, 152, 152);
+    --troca-plano-de-fundo: url('../assets/moon-stars.svg');
+}
+
+.light {
+    --cor-texto: rgba(12, 11, 11, 0.534);
+    --plano-de-fundo: url('../assets/fundopastel.jpg');--cor-da-borda: rgba(26, 21, 21, 0.5);
+    --cor-do-botao: rgba(209, 193, 193, 0.05);
+    --cor-do-botao-hover: rgba(8, 8, 8, 0.13);
+    --cor-da-borda-links: rgba(0, 0, 0, 0.1)
+    --troca-plano-de-fundo: url('../assets.fundopastel.jpg');
+}
+
+
 body * {
-    color: rgb(255, 255, 255);
+    color:var(--cor-texto);
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background: url('../assets/c344ece5ea6e3fc6c11e4909dceda7c8.jpg') no-repeat top center/cover;
+    background: var(--plano-de-fundo) no-repeat top center/cover;
     height: 100vh;
 }
 
@@ -36,9 +57,35 @@ body {
     margin-bottom: 50px;
 }
 
-#linksSocial ion-icon {
-    height: 35px;
-    width: 35px;
+#troca {
+    position: relative;
+    width: 64px;
+    height: 24px;
+    border: 1px solid var(--cor-da-borda);
+    background: var(--cor-do-botao);
+    border-radius: 50px;
+    margin: 24px auto;
+}
+
+#troca button {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 0;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white var(--troca-plano-de-fundo) no-repeat center;
+
+}
+
+#troca button:hover {
+    outline: 8px solid var(--cor-da-borda-links)
+}
+
+.light #troca button {
+    left: 50%;
 }
 
 ul {
@@ -52,8 +99,8 @@ ul {
 ul li a {
     text-decoration: none;
     /* tira o sumblinhado dos links*/
-    background: rgba(114, 114, 114, 0.212);
-    border: 1px solid rgba(114, 113, 113, 0.918);
+    background: var(--cor-do-botao);
+    border: 1px solid var(--cor-da-borda);
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -63,18 +110,23 @@ ul li a {
 
 ul li a:hover {
     border: 1.5px solid white;
-    background: rgba(236, 0, 0, 0.212);
+    background: var(--cor-do-botao-hover)
+}
+
+#linksSocial ion-icon {
+    height: 35px;
+    width: 35px;
 }
 
 #linksSocial {
     list-style: none;
     display: flex;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0);
+    border: 0px solid var(--cor-da-borda);
     margin: 70px auto;
 }
 
-#linksSocial a{
+#linksSocial a {
     font-size: 24px;
     display: flex;
     border-radius: 50%;
@@ -86,6 +138,11 @@ ul li a:hover {
 }
 
 @media (max-width: 700px) {
-    body {
-        background: url('../assets/bg-mobile.jpg') no-repeat top center/cover;
+    :root {
+        --plano-de-fundo: url('../assets/bg-mobile.jpg');
+    }
+
+    .light {
+        --plano-de-fundo: url('../assets/bg-mobile-light.jpg');
+    }
 }
